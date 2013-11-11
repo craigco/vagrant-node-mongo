@@ -10,7 +10,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
   config.omnibus.chef_version = :latest
 
-  config.vm.host_name = "fxdev-vagrant"
+  config.berkshelf.enabled = true
+
+  config.vm.host_name = "dev-vagrant"
  
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "precise64"
@@ -84,7 +86,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # some recipes and/or roles.
   #
   config.vm.provision :chef_solo do |chef|
-    chef.cookbooks_path = "cookbooks"
     
     chef.add_recipe "apt"
     chef.add_recipe "git"
